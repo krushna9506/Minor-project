@@ -56,7 +56,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 # Set up CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174"],  # Allow frontend origins used by Vite dev server
+    allow_origins=settings.ALLOWED_ORIGINS if settings.ALLOWED_ORIGINS else ["*"],  # Use settings or allow all in development
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
